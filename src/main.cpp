@@ -11,8 +11,9 @@
 #define WIDTH 100
 #define HEIGHT 35
 
-int main(int argc, char *argv[]) {
-
+// TODO
+// - Keyboard input
+int main() {
   static Renderer renderer(WIDTH, HEIGHT);
 
   RenderBuffer test1(WIDTH, HEIGHT, ' ');
