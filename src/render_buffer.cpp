@@ -2,6 +2,7 @@
 #include <cstring>
 #include <algorithm>
 #include <type_traits>
+#include <vector>
 #include "render_buffer.hpp"
 
 // Constructors
@@ -14,9 +15,9 @@ RenderBuffer::RenderBuffer(char value) {
 RenderBuffer::RenderBuffer(size_t width, size_t height) : width(width), height(height) { }
 
 RenderBuffer::RenderBuffer(size_t width, size_t height, char value) {
+  this->pixels.assign(height, std::vector<char>(width, value));
   this->width = width;
   this->height = height;
-  this->setAll(value);
 }
 
 /// INDEX BASE 1
@@ -34,7 +35,9 @@ void RenderBuffer::clearPixel(size_t x, size_t y) {
 }
 
 void RenderBuffer::setAll(char value) {
-  memset(pixels, value, sizeof(pixels));
+  for (auto& row : this->pixels) {
+    std::fill(row.begin(), row.end(), value);
+  }
 }
 
 // Rendering
@@ -58,6 +61,46 @@ void RenderBuffer::overlay(RenderBuffer r) {
     }
   }
 }
+
+// Transform
+void RenderBuffer::moveUp(size_t amount) {
+  if (this->pixels.size() == 0) return;
+  for (int i = 0; i < amount; i++) {
+    this->pixels.push_back(this->pixels[0]);
+    this->pixels.erase(this->pixels.begin());
+    this->pixels.back().assign(this->height, ' ');
+  }
+}
+
+void RenderBuffer::moveDown(size_t amount) {
+  if (this->pixels.size() == 0) return;
+  for (int i = 0; i < amount; i++) {
+    this->pixels.insert(this->pixels.begin(), this->pixels.back());
+    this->pixels.pop_back();
+    this->pixels.front().assign(this->height, ' ');
+  }
+}
+
+void RenderBuffer::moveLeft(size_t amount) {
+  if (this->pixels.size() == 0) return;
+  for (int i = 0; i < amount; i++) {
+    for (int j = 0; j < this->height; j++) {
+      this->pixels[j].push_back(' ');
+      this->pixels[j].erase(this->pixels[j].begin());
+    }
+  }
+}
+
+void RenderBuffer::moveRight(size_t amount) {
+  if (this->pixels.size() == 0) return;
+  for (int i = 0; i < amount; i++) {
+    for (int j = 0; j < this->height; j++) {
+      this->pixels[j].insert(this->pixels[j].begin(), ' ');
+      this->pixels[j].pop_back();
+    }
+  }
+}
+
 
 // Debug
 void RenderBuffer::display() {

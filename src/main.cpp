@@ -8,7 +8,7 @@
 #include "common.hpp"
 #include "renderer.hpp"
 
-#define WIDTH 50
+#define WIDTH 100
 #define HEIGHT 35
 
 int main(int argc, char *argv[]) {
@@ -34,11 +34,10 @@ int main(int argc, char *argv[]) {
     renderer.clear();
 
     // stuff
-    test1.moveUp(1);
-    test1.moveLeft(1);
-    // This doesnt work!!!!!!
-    // test1.moveDown(1);
-    // test1.moveRight(1);
+    // test1.moveUp(5);
+    // test1.moveLeft(5);
+    // test1.moveDown(10);
+    // test1.moveRight(5);
 
     // Actual rendering
     renderer.render();

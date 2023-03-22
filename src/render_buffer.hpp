@@ -4,6 +4,7 @@
 #include <iostream>
 #include <sys/ioctl.h>
 #include <unistd.h>
+#include <vector>
 
 #define MAX_WIDTH 200
 #define MAX_HEIGHT 200
@@ -13,7 +14,7 @@
 class RenderBuffer {
 
 private:
-  char pixels[MAX_HEIGHT][MAX_WIDTH];
+  std::vector<std::vector<char> > pixels;
 
 public:
   size_t width;
