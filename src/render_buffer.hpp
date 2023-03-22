@@ -6,9 +6,6 @@
 #include <unistd.h>
 #include <vector>
 
-#define MAX_WIDTH 200
-#define MAX_HEIGHT 200
-
 // TODO
 // Implement a priority system like player tag, enviroment tag, etc.
 class RenderBuffer {
