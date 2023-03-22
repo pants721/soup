@@ -9,24 +9,24 @@
 #include "renderer.hpp"
 
 #define WIDTH 50
-#define HEIGHT 25
+#define HEIGHT 35
 
 int main(int argc, char *argv[]) {
 
   static Renderer renderer(WIDTH, HEIGHT);
 
   RenderBuffer test1(WIDTH, HEIGHT, ' ');
-  test1.setPixel(1, 1, '#');
-  test1.setPixel(2, 1, '#');
-  test1.setPixel(3, 1, '#');
+  test1.setPixel(21, 21, '#');
+  test1.setPixel(22, 21, '#');
+  test1.setPixel(23, 21, '#');
 
-  test1.setPixel(1, 2, '#');
-  test1.setPixel(3, 2, '#');
+  test1.setPixel(21, 22, '#');
+  test1.setPixel(23, 22, '#');
 
-  test1.setPixel(1, 3, '#');
-  test1.setPixel(2, 3, '#');
-  test1.setPixel(3, 3, '#');
-  renderer.addRenderBuffer(test1);
+  test1.setPixel(21, 23, '#');
+  test1.setPixel(22, 23, '#');
+  test1.setPixel(23, 23, '#');
+  renderer.addRenderBuffer(std::ref(test1));
 
   while (1) {
     // Clear terminal and render stack
@@ -34,14 +34,19 @@ int main(int argc, char *argv[]) {
     renderer.clear();
 
     // stuff
-    test1.moveRight(1);
+    test1.moveUp(1);
+    test1.moveLeft(1);
+    // This doesnt work!!!!!!
+    // test1.moveDown(1);
+    // test1.moveRight(1);
 
     // Actual rendering
     renderer.render();
     renderer.draw();
 
     // Renders at 25 frames per second
-    usleep(40000);
+    // usleep(40000);
+    usleep(400000);
   }
 }
 

@@ -1,6 +1,7 @@
 #include <cstdlib>
 #include <cstring>
 #include <algorithm>
+#include <type_traits>
 #include "render_buffer.hpp"
 
 // Constructors
@@ -53,35 +54,6 @@ void RenderBuffer::overlay(RenderBuffer r) {
       // image2
       if (r.pixels[i][j] != ' ') {
         this->pixels[i][j] = r.pixels[i][j];
-      }
-    }
-  }
-}
-
-// Transform
-void RenderBuffer::moveUp(size_t amount) {
-  for (int i = 0; i < amount; i++) {
-    for (int row = 0; row < this->height; row++) {
-      for (int col = 0; col < this->width; col++) {
-        if (this->pixels[row][col] != ' ') {
-          char temp = this->pixels[row][col];
-          this->pixels[row][col] = this->pixels[row - 1][col];
-          this->pixels[row+1][col] = temp;
-        }
-      }
-    }
-  }
-}
-
-void RenderBuffer::moveRight(size_t amount) {
-  for (int i = 0; i < amount; i++) {
-    for (int row = 0; row < this->height; row++) {
-      for (int col = 0; col < this->width; col++) {
-        if (this->pixels[row][col] != ' ') {
-          char temp = this->pixels[row][col];
-          this->pixels[row][col] = this->pixels[row][col-1];
-          this->pixels[row][col-1] = temp;
-        }
       }
     }
   }

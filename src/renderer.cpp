@@ -1,4 +1,5 @@
 #include <cstdlib>
+#include <functional>
 #include <vector>
 
 #include "render_buffer.hpp"
@@ -7,11 +8,11 @@
 Renderer::Renderer(size_t width, size_t height) {
   // NEED to initialize this with ' '
   frame = RenderBuffer(width, height, ' ');
-  stack = std::vector<RenderBuffer>();
+  stack = std::vector<std::reference_wrapper<RenderBuffer> >();
 }
 
-void Renderer::addRenderBuffer(RenderBuffer r) {
-  this->stack.push_back(r);
+void Renderer::addRenderBuffer(RenderBuffer &r) {
+  this->stack.push_back(std::ref(r));
 }
 
 void Renderer::clear() {
