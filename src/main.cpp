@@ -45,8 +45,7 @@ int main() {
     renderer.draw();
 
     // Renders at 25 frames per second
-    // usleep(40000);
-    usleep(400000);
+    usleep(40000);
   }
 }
 
