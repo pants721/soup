@@ -12,7 +12,7 @@ Renderer::Renderer(size_t width, size_t height) {
 }
 
 void Renderer::addRenderBuffer(RenderBuffer &r) {
-  this->stack.push_back(std::ref(r));
+  this->stack.push_back(r);
 }
 
 void Renderer::clear() {

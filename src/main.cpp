@@ -35,7 +35,7 @@ int main() {
     renderer.clear();
 
     // stuff
-    test1.moveUp(5);
+    test1.moveUp(1);
     // test1.moveLeft(5);
     // test1.moveDown(10);
     // test1.moveRight(5);
