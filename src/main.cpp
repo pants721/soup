@@ -3,11 +3,11 @@
 
 // Windows
 #ifdef _WIN32
-  #include <Windows.h>
-  #include <synchapi.h>
+#include <Windows.h>
+#include <synchapi.h>
 // Unix, Mac
 #else
-  #include <unistd.h>
+#include <unistd.h>
 #endif // _WIN32
 
 #include "render_buffer.hpp"
