@@ -1,9 +1,7 @@
 #ifndef RENDER_STACK_H
 #define RENDER_STACK_H
 
-#include <iostream>
-#include <sys/ioctl.h>
-#include <unistd.h>
+#include <cstdlib>
 #include <vector>
 
 // TODO

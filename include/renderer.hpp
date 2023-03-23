@@ -1,7 +1,6 @@
 #ifndef RENDERER_H
 #define RENDERER_H
 
-#include <cstdlib>
 #include <functional>
 #include <vector>
 #include "render_buffer.hpp"

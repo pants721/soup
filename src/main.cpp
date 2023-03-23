@@ -1,8 +1,16 @@
 #include <cstdlib>
-#include <unistd.h>
-#include <ncurses.h>
 #include <iostream>
-#include <sys/ioctl.h>
+
+#ifdef _WIN32
+// Windows
+#include <Windows.h>
+#include <synchapi.h>
+
+#else
+// Unix, Mac
+#include <unistd.h>
+
+#endif // _WIN32
 
 #include "render_buffer.hpp"
 #include "common.hpp"
@@ -45,7 +53,15 @@ int main() {
     renderer.draw();
 
     // Renders at 25 frames per second
+    #ifdef _WIN32
+    // Windows
+    Sleep(40);
+
+    #else
+    // Unix, Mac
     usleep(40000);
+
+    #endif // _WIN32
   }
 }
 
