@@ -1,9 +1,7 @@
-#include <cstdlib>
-#include <functional>
-#include <vector>
-
-#include "render_buffer.hpp"
 #include "renderer.hpp"
+
+#include <vector>
+#include "render_buffer.hpp"
 
 Renderer::Renderer(size_t width, size_t height) {
   // NEED to initialize this with ' '

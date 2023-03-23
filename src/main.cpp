@@ -1,19 +1,16 @@
 #include <cstdlib>
-#include <iostream>
+#include <__functional/reference_wrapper.h>
 
-#ifdef _WIN32
 // Windows
-#include <Windows.h>
-#include <synchapi.h>
-
-#else
+#ifdef _WIN32
+  #include <Windows.h>
+  #include <synchapi.h>
 // Unix, Mac
-#include <unistd.h>
-
+#else
+  #include <unistd.h>
 #endif // _WIN32
 
 #include "render_buffer.hpp"
-#include "common.hpp"
 #include "renderer.hpp"
 
 #define WIDTH 100
@@ -42,11 +39,8 @@ int main() {
     system("clear");
     renderer.clear();
 
-    // stuff
+    // Actual Game Events
     test1.moveUp(1);
-    // test1.moveLeft(5);
-    // test1.moveDown(10);
-    // test1.moveRight(5);
 
     // Actual rendering
     renderer.render();
@@ -64,31 +58,3 @@ int main() {
     #endif // _WIN32
   }
 }
-
-
-
-
-
-
-
-
-
-
-// RenderBuffer test1(WIDTH, HEIGHT, ' ');
-// test1.setPixel(i + 1, 1, '#');
-// test1.setPixel(i + 2, 1, '#');
-// test1.setPixel(i + 3, 1, '#');
-
-// test1.setPixel(i + 1, 2, '#');
-// test1.setPixel(i + 3, 2, '#');
-
-// test1.setPixel(i + 1, 3, '#');
-// test1.setPixel(i + 2, 3, '#');
-// test1.setPixel(i + 3, 3, '#');
-
-
-
-// RenderBuffer test1(WIDTH, HEIGHT, ' ');
-// test1.setPixel(count, 12, '#');
-// ++count;
-// renderer.addRenderBuffer(test1);

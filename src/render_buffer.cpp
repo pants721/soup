@@ -1,10 +1,9 @@
-#include <cstdlib>
-#include <cstring>
-#include <iostream>
-#include <algorithm>
-#include <type_traits>
-#include <vector>
 #include "render_buffer.hpp"
+
+#include <__algorithm/fill.h>
+#include <cstdlib>
+#include <iostream>
+#include <vector>
 
 // Constructors
 RenderBuffer::RenderBuffer() : pixels(), width(), height() { }
@@ -101,7 +100,6 @@ void RenderBuffer::moveRight(size_t amount) {
     }
   }
 }
-
 
 // Debug
 void RenderBuffer::display() {
