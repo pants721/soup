@@ -34,6 +34,19 @@ int main() {
   test1.setPixel(23, 23, '#');
   renderer.addRenderBuffer(std::ref(test1));
 
+  RenderBuffer test2(WIDTH, HEIGHT, ' ');
+  test2.setPixel(31, 31, '#');
+  test2.setPixel(32, 31, '#');
+  test2.setPixel(33, 31, '#');
+
+  test2.setPixel(31, 32, '#');
+  test2.setPixel(33, 32, '#');
+
+  test2.setPixel(31, 33, '#');
+  test2.setPixel(32, 33, '#');
+  test2.setPixel(33, 33, '#');
+  renderer.addRenderBuffer(std::ref(test2));
+
   while (1) {
     // Clear terminal and render stack
     system("clear");
@@ -41,6 +54,8 @@ int main() {
 
     // Actual Game Events
     test1.moveUp(1);
+    test2.moveDown(1);
+    test2.moveRight(1);
 
     // Actual rendering
     renderer.render();

@@ -1,11 +1,9 @@
 .cache/
-CMakeCache.txt
-CMakeFiles/
-Makefile
-cmake_install.cmake
 compile_commands.json
 scratch.md
 soup
+build/
+build/*
 
 # Prerequisites
 *.d

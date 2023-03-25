@@ -42,8 +42,8 @@ void RenderBuffer::setAll(char value) {
 
 // Rendering
 void RenderBuffer::draw() {
-  for (int row = 0; row < this->height; row++) {
-    for (int col = 0; col < this->width; col++) {
+  for (size_t row = 0; row < this->height; row++) {
+    for (size_t col = 0; col < this->width; col++) {
       std::cout << pixels[row][col];
     }
     std::cout << std::endl;
@@ -51,8 +51,8 @@ void RenderBuffer::draw() {
 }
 
 void RenderBuffer::overlay(RenderBuffer r) {
-  for (int i = 0; i < this->height; i++) {
-    for (int j = 0; j < this->width; j++) {
+  for (size_t i = 0; i < this->height; i++) {
+    for (size_t j = 0; j < this->width; j++) {
       // Merge the two images by overwriting pixels of image1 with pixels of
       // image2
       if (r.pixels[i][j] != ' ') {
@@ -65,7 +65,7 @@ void RenderBuffer::overlay(RenderBuffer r) {
 // Transform
 void RenderBuffer::moveUp(size_t amount) {
   if (this->pixels.size() == 0) return;
-  for (int i = 0; i < amount; i++) {
+  for (size_t i = 0; i < amount; i++) {
     this->pixels.push_back(this->pixels[0]);
     this->pixels.erase(this->pixels.begin());
     this->pixels.back().assign(this->height, ' ');
@@ -74,7 +74,7 @@ void RenderBuffer::moveUp(size_t amount) {
 
 void RenderBuffer::moveDown(size_t amount) {
   if (this->pixels.size() == 0) return;
-  for (int i = 0; i < amount; i++) {
+  for (size_t i = 0; i < amount; i++) {
     this->pixels.insert(this->pixels.begin(), this->pixels.back());
     this->pixels.pop_back();
     this->pixels.front().assign(this->height, ' ');
@@ -83,8 +83,8 @@ void RenderBuffer::moveDown(size_t amount) {
 
 void RenderBuffer::moveLeft(size_t amount) {
   if (this->pixels.size() == 0) return;
-  for (int i = 0; i < amount; i++) {
-    for (int j = 0; j < this->height; j++) {
+  for (size_t i = 0; i < amount; i++) {
+    for (size_t j = 0; j < this->height; j++) {
       this->pixels[j].push_back(' ');
       this->pixels[j].erase(this->pixels[j].begin());
     }
@@ -93,8 +93,8 @@ void RenderBuffer::moveLeft(size_t amount) {
 
 void RenderBuffer::moveRight(size_t amount) {
   if (this->pixels.size() == 0) return;
-  for (int i = 0; i < amount; i++) {
-    for (int j = 0; j < this->height; j++) {
+  for (size_t i = 0; i < amount; i++) {
+    for (size_t j = 0; j < this->height; j++) {
       this->pixels[j].insert(this->pixels[j].begin(), ' ');
       this->pixels[j].pop_back();
     }
@@ -103,8 +103,8 @@ void RenderBuffer::moveRight(size_t amount) {
 
 // Debug
 void RenderBuffer::display() {
-  for (int a = 0; a < this->height; a++) {
-    for (int b = 0; b < this->width; b++) {
+  for (size_t a = 0; a < this->height; a++) {
+    for (size_t b = 0; b < this->width; b++) {
       std::cout << pixels[a][b] << " ";
     }
     std::cout << std::endl;
