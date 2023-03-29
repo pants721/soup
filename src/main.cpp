@@ -21,7 +21,7 @@
 int main() {
   static Renderer renderer(WIDTH, HEIGHT);
 
-  RenderBuffer test1(WIDTH, HEIGHT, ' ');
+  RenderBuffer test1(WIDTH, HEIGHT, ' ', 2);
   test1.setPixel(21, 21, '#');
   test1.setPixel(22, 21, '#');
   test1.setPixel(23, 21, '#');
@@ -34,18 +34,22 @@ int main() {
   test1.setPixel(23, 23, '#');
   renderer.addRenderBuffer(std::ref(test1));
 
-  RenderBuffer test2(WIDTH, HEIGHT, ' ');
-  test2.setPixel(31, 31, '#');
-  test2.setPixel(32, 31, '#');
-  test2.setPixel(33, 31, '#');
+  RenderBuffer test2(WIDTH, HEIGHT, ' ', 1);
+  test2.setPixel(20, 20, 'A');
+  test2.setPixel(21, 20, 'A');
+  test2.setPixel(22, 20, 'A');
 
-  test2.setPixel(31, 32, '#');
-  test2.setPixel(33, 32, '#');
+  test2.setPixel(20, 21, 'A');
+  test2.setPixel(22, 21, 'A');
 
-  test2.setPixel(31, 33, '#');
-  test2.setPixel(32, 33, '#');
-  test2.setPixel(33, 33, '#');
+  test2.setPixel(20, 22, 'A');
+  test2.setPixel(21, 22, 'A');
+  test2.setPixel(22, 22, 'A');
   renderer.addRenderBuffer(std::ref(test2));
+
+  RenderBuffer test3(WIDTH, HEIGHT, ' ', 0);
+  test3.setPixel(20, 20, '&');
+  renderer.addRenderBuffer(std::ref(test3));
 
   while (1) {
     // Clear terminal and render stack
@@ -53,9 +57,9 @@ int main() {
     renderer.clear();
 
     // Actual Game Events
-    test1.moveUp(1);
-    test2.moveDown(1);
-    test2.moveRight(1);
+    // test1.moveUp(1);
+    // test2.moveDown(1);
+    // test2.moveRight(1);
 
     // Actual rendering
     renderer.render();
