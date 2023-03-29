@@ -1,5 +1,6 @@
 #include "renderer.hpp"
 
+#include <algorithm>
 #include <vector>
 #include "render_buffer.hpp"
 
@@ -18,7 +19,15 @@ void Renderer::clear() {
 }
 
 void Renderer::render() {
+  std::vector<RenderBuffer> buffers;
+
   for (auto buffer : this->stack) {
+    buffers.push_back(buffer.get());
+  }
+
+  std::sort(buffers.begin(), buffers.end());
+
+  for (auto buffer : buffers) {
     this->frame.overlay(buffer);
   }
 }
