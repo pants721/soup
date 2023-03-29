@@ -4,8 +4,6 @@
 #include <cstdlib>
 #include <vector>
 
-// TODO
-// Implement a priority system like player tag, enviroment tag, etc.
 class RenderBuffer {
 private:
   std::vector<std::vector<char> > pixels;
