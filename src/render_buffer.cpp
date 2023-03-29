@@ -20,13 +20,6 @@ RenderBuffer::RenderBuffer(size_t width, size_t height, char value) {
   this->height = height;
 }
 
-RenderBuffer::RenderBuffer(size_t width, size_t height, char value, int layer) {
-  this->pixels.assign(height, std::vector<char>(width, value));
-  this->width = width;
-  this->height = height;
-  this->layer = layer;
-}
-
 /// INDEX BASE 1
 // Pixel manipulation
 char RenderBuffer::getPixel(size_t x, size_t y) {
@@ -45,10 +38,6 @@ void RenderBuffer::setAll(char value) {
   for (auto& row : this->pixels) {
     std::fill(row.begin(), row.end(), value);
   }
-}
-
-void RenderBuffer::setLayer(int val) {
-  this->layer = val;
 }
 
 // Rendering
