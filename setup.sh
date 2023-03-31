@@ -22,4 +22,6 @@ ln -s build/debug/compile_commands.json .
 
 # Make build.sh executable
 chmod +x build.sh
+# Make run.sh executable
+chmod +x run.sh
 

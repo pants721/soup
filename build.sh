@@ -1,11 +1,9 @@
 #!/bin/bash
 
-# Build and run release
+# Build release
 if [ "$1" = "release" ] || [ "$1" = "r" ]; then
     cmake --build build/release
-    ./build/release/soup
-# Debug build
+# Build debug
 else
     cmake --build build/debug
-    ./build/debug/soup
 fi
