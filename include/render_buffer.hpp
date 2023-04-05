@@ -35,6 +35,7 @@ public:
   void drawLine(int x1, int y1, int x2, int y2, char value);
   void drawRect(int x, int y, int width, int height, char value);
   void drawCircle(int centerX, int centerY, int radius, char value);
+  void drawCircleEightPoints(int centerX, int centerY, int x, int y, char value);
 
   // Rendering
   void draw();

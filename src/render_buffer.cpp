@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <cstdlib>
 #include <iostream>
+#include <unistd.h>
 #include <vector>
 #include <cmath>
 
@@ -143,6 +144,40 @@ void RenderBuffer::drawRect(int x, int y, int width, int height, char value) {
   this->drawLine(x + width, y, x + width, y + height, value);
   // Bottom line
   this->drawLine(x, y + height, x + width, y + height, value);
+}
+
+// Source: https://www.geeksforgeeks.org/bresenhams-circle-drawing-algorithm/
+void RenderBuffer::drawCircle(int centerX, int centerY, int radius, char value) {
+  int x = 0, y = radius;
+  int d = 3 - 2 * radius;
+  this->drawCircleEightPoints(centerX, centerY, x, y, value);
+  while (y >= x) {
+    // for each pixel we will
+    // draw all eight pixels
+
+    x++;
+
+    // check for decision parameter
+    // and correspondingly
+    // update d, x, y
+    if (d > 0) {
+      y--;
+      d = d + 4 * (x - y) + 10;
+    } else
+      d = d + 4 * x + 6;
+    this->drawCircleEightPoints(centerX, centerY, x, y, value);
+  }
+}
+
+void RenderBuffer::drawCircleEightPoints(int centerX, int centerY, int x, int y, char value) {
+  this->setPixel(centerX + x, centerY + y, value);
+  this->setPixel(centerX - x, centerY + y, value);
+  this->setPixel(centerX + x, centerY - y, value);
+  this->setPixel(centerX - x, centerY - y, value);
+  this->setPixel(centerX + y, centerY + x, value);
+  this->setPixel(centerX - y, centerY + x, value);
+  this->setPixel(centerX + y, centerY - x, value);
+  this->setPixel(centerX - y, centerY - x, value);
 }
 
 // Rendering
