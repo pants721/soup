@@ -4,6 +4,7 @@
 #include <cstdlib>
 #include <iostream>
 #include <vector>
+#include <cmath>
 
 // Constructors
 RenderBuffer::RenderBuffer() : pixels(), width(), height() { }
@@ -18,6 +19,7 @@ RenderBuffer::RenderBuffer(size_t width, size_t height, char value) {
   this->pixels.assign(height, std::vector<char>(width, value));
   this->width = width;
   this->height = height;
+  this->layer = 0;
 }
 
 RenderBuffer::RenderBuffer(size_t width, size_t height, char value, int layer) {
@@ -49,6 +51,41 @@ void RenderBuffer::setAll(char value) {
 
 void RenderBuffer::setLayer(int val) {
   this->layer = val;
+}
+
+void RenderBuffer::drawLine(int x1, int y1, int x2, int y2, char value) {
+  using namespace std;
+
+  float distance = sqrt(pow(abs(x2 - x1), 2) + pow(abs(y2 - y1), 2));
+  int width = abs(x1 - x2);
+  int height = abs(y1 - y2);
+
+  if (x1 == x2) {
+    // Vertical line
+    for (int i = min(y1, y2); i <= max(y1, y2); i++) {
+      this->setPixel(x1, i, value);
+    }
+  } else if (y1 == y2) {
+    // Horizontal line
+    for (int i = min(x1, x2); i <= max(x1, x2); i++) {
+      this->setPixel(i, y1, value);
+    }
+  } else {
+    // Diagonal line
+    int dx = x2 - x1;
+    int dy = y2 - y1;
+    int D = 2 * dy - dx;
+    int y = y1;
+
+    for (int x = x1; x <= x2; x++) {
+      this->setPixel(x, y, value);
+      if (D > 0) {
+        y = y + 1;
+        D = D - 2 * dx;
+      }
+      D = D + 2 * dy;
+    }
+  }
 }
 
 // Rendering

@@ -1,6 +1,7 @@
 #ifndef RENDER_STACK_H
 #define RENDER_STACK_H
 
+#include <cstddef>
 #include <cstdlib>
 #include <vector>
 
@@ -27,6 +28,7 @@ public:
   void clearPixel(size_t x_coord, size_t y_coord);
   void setAll(char value);
   void setLayer(int val);
+  void drawLine(int x1, int y1, int x2, int y2, char value);
 
   // Rendering
   void draw();
