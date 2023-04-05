@@ -1,7 +1,7 @@
 #ifndef RENDERER_H
 #define RENDERER_H
 
-#include <__functional/reference_wrapper.h>
+#include <functional>
 #include <stddef.h>
 #include <vector>
 #include "render_buffer.hpp"

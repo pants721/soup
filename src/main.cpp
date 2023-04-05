@@ -1,5 +1,5 @@
 #include <cstdlib>
-#include <__functional/reference_wrapper.h>
+#include <functional>
 
 // Windows
 #ifdef _WIN32
@@ -21,35 +21,35 @@
 int main() {
   static Renderer renderer(WIDTH, HEIGHT);
 
-  RenderBuffer test1(WIDTH, HEIGHT, ' ', 2);
-  test1.setPixel(21, 21, '#');
-  test1.setPixel(22, 21, '#');
-  test1.setPixel(23, 21, '#');
+  RenderBuffer test1(3, 3, ' ', 2);
+  test1.x = 3;
+  test1.y = 1;
+  test1.setPixel(1, 1, '#');
+  test1.setPixel(2, 1, '#');
+  test1.setPixel(3, 1, '#');
 
-  test1.setPixel(21, 22, '#');
-  test1.setPixel(23, 22, '#');
+  test1.setPixel(1, 2, '#');
+  test1.setPixel(3, 2, '#');
 
-  test1.setPixel(21, 23, '#');
-  test1.setPixel(22, 23, '#');
-  test1.setPixel(23, 23, '#');
+  test1.setPixel(1, 3, '#');
+  test1.setPixel(2, 3, '#');
+  test1.setPixel(3, 3, '#');
   renderer.addRenderBuffer(std::ref(test1));
 
-  RenderBuffer test2(WIDTH, HEIGHT, ' ', 1);
-  test2.setPixel(20, 20, 'A');
-  test2.setPixel(21, 20, 'A');
-  test2.setPixel(22, 20, 'A');
+  RenderBuffer test2(3, 3, ' ', 0);
+  test2.x = 1;
+  test2.y = 1;
+  test2.setPixel(1, 1, 'A');
+  test2.setPixel(2, 1, 'A');
+  test2.setPixel(3, 1, 'A');
 
-  test2.setPixel(20, 21, 'A');
-  test2.setPixel(22, 21, 'A');
+  test2.setPixel(1, 2, 'A');
+  test2.setPixel(3, 2, 'A');
 
-  test2.setPixel(20, 22, 'A');
-  test2.setPixel(21, 22, 'A');
-  test2.setPixel(22, 22, 'A');
+  test2.setPixel(1, 3, 'A');
+  test2.setPixel(2, 3, 'A');
+  test2.setPixel(3, 3, 'A');
   renderer.addRenderBuffer(std::ref(test2));
-
-  RenderBuffer test3(WIDTH, HEIGHT, ' ', 0);
-  test3.setPixel(20, 20, '&');
-  renderer.addRenderBuffer(std::ref(test3));
 
   while (1) {
     // Clear terminal and render stack

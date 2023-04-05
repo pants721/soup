@@ -13,15 +13,18 @@ public:
   size_t width;
   size_t height;
 
+  size_t x;
+  size_t y;
+
   RenderBuffer();
   explicit RenderBuffer(char value);
   RenderBuffer(size_t width, size_t height);
   RenderBuffer(size_t width, size_t height, char value);
   RenderBuffer(size_t width, size_t height, char value, int layer);
 
-  char getPixel(size_t x, size_t y);
-  void setPixel(size_t x, size_t y, char value);
-  void clearPixel(size_t x, size_t y);
+  char getPixel(size_t x_coord, size_t y_coord);
+  void setPixel(size_t x_coord, size_t y_coord, char value);
+  void clearPixel(size_t x_coord, size_t y_coord);
   void setAll(char value);
   void setLayer(int val);
 

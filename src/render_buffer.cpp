@@ -1,6 +1,6 @@
 #include "render_buffer.hpp"
 
-#include <__algorithm/fill.h>
+#include <algorithm>
 #include <cstdlib>
 #include <iostream>
 #include <vector>
@@ -29,16 +29,16 @@ RenderBuffer::RenderBuffer(size_t width, size_t height, char value, int layer) {
 
 /// INDEX BASE 1
 // Pixel manipulation
-char RenderBuffer::getPixel(size_t x, size_t y) {
-  return this->pixels[y-1][x-1];
+char RenderBuffer::getPixel(size_t x_coord, size_t y_coord) {
+  return this->pixels[y_coord-1][x_coord-1];
 }
 
-void RenderBuffer::setPixel(size_t x, size_t y, char value) {
-  this->pixels[y-1][x-1] = value;
+void RenderBuffer::setPixel(size_t x_coord, size_t y_coord, char value) {
+  this->pixels[y_coord-1][x_coord-1] = value;
 }
 
-void RenderBuffer::clearPixel(size_t x, size_t y) {
-  this->pixels[y-1][x-1] = ' ';
+void RenderBuffer::clearPixel(size_t x_coord, size_t y_coord) {
+  this->pixels[y_coord-1][x_coord-1] = ' ';
 }
 
 void RenderBuffer::setAll(char value) {
@@ -61,13 +61,16 @@ void RenderBuffer::draw() {
   }
 }
 
+// Smaller buffer should be passed as r
 void RenderBuffer::overlay(RenderBuffer r) {
-  for (size_t i = 0; i < this->height; i++) {
-    for (size_t j = 0; j < this->width; j++) {
+  for (size_t i = 0; i < r.height; i++) {
+    for (size_t j = 0; j < r.width; j++) {
       // Merge the two images by overwriting pixels of image1 with pixels of
       // image2
       if (r.pixels[i][j] != ' ') {
-        this->pixels[i][j] = r.pixels[i][j];
+        size_t render_x = j + r.x - 1;
+        size_t render_y = i + r.y + 1;
+        this->pixels[render_y][render_x] = r.pixels[i][j];
       }
     }
   }
