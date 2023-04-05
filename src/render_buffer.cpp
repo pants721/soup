@@ -53,13 +53,55 @@ void RenderBuffer::setLayer(int val) {
   this->layer = val;
 }
 
+void RenderBuffer::drawLineLow(int x1, int y1, int x2, int y2, char value) {
+  int dx = x2 - x1;
+  int dy = y2 - y1;
+  int yi = 1;
+
+  if (dy < 0) {
+    yi = -1;
+    dy = -dy;
+  }
+  int D = (2 * dy) - dx;
+  int y = y1;
+
+  for (int x = x1; x <= x2; x++) {
+    this->setPixel(x, y, value);
+    if (D > 0) {
+      y = y + yi;
+      D = D + (2 * (dy - dx));
+    } else {
+      D = D + 2 * dy;
+    }
+  }
+}
+
+void RenderBuffer::drawLineHigh(int x1, int y1, int x2, int y2, char value) {
+  int dx = x2 - x1;
+  int dy = y2 - y1;
+  int xi = 1;
+
+  if (dx < 0) {
+    xi = -1;
+    dx = -dx;
+  }
+  int D = (2 * dx) - dy;
+  int x = x1;
+
+  for (int y = y1; y <= y2; y++) {
+    this->setPixel(x, y, value);
+    if (D > 0) {
+      x = x + xi;
+      D = D + (2 * (dx - dy));
+    } else {
+      D = D + 2 * dx;
+    }
+  }
+}
+
+
 void RenderBuffer::drawLine(int x1, int y1, int x2, int y2, char value) {
   using namespace std;
-
-  float distance = sqrt(pow(abs(x2 - x1), 2) + pow(abs(y2 - y1), 2));
-  int width = abs(x1 - x2);
-  int height = abs(y1 - y2);
-
   if (x1 == x2) {
     // Vertical line
     for (int i = min(y1, y2); i <= max(y1, y2); i++) {
@@ -72,18 +114,20 @@ void RenderBuffer::drawLine(int x1, int y1, int x2, int y2, char value) {
     }
   } else {
     // Diagonal line
-    int dx = x2 - x1;
-    int dy = y2 - y1;
-    int D = 2 * dy - dx;
-    int y = y1;
+    // Source: https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm
 
-    for (int x = x1; x <= x2; x++) {
-      this->setPixel(x, y, value);
-      if (D > 0) {
-        y = y + 1;
-        D = D - 2 * dx;
+    if (abs(y2 - y1) < abs(x2 - x1)) {
+      if (x1 > x2) {
+        this->drawLineLow(x2, y2, x1, y1, value);
+      } else {
+        this->drawLineLow(x1, y1, x2, y2, value);
       }
-      D = D + 2 * dy;
+    } else {
+      if (y1 > y2) {
+        this->drawLineHigh(x2, y2, x1, y1, value);
+      } else {
+        this->drawLineHigh(x1, y1, x2, y2, value);
+      }
     }
   }
 }

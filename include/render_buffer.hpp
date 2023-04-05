@@ -9,6 +9,8 @@ class RenderBuffer {
 private:
   std::vector<std::vector<char> > pixels;
   int layer;
+  void drawLineLow(int x1, int y1, int x2, int y2, char value);
+  void drawLineHigh(int x1, int y1, int x2, int y2, char value);
 
 public:
   size_t width;
@@ -28,8 +30,10 @@ public:
   void clearPixel(size_t x_coord, size_t y_coord);
   void setAll(char value);
   void setLayer(int val);
-  void drawLine(int x1, int y1, int x2, int y2, char value);
 
+  // Drawing
+  void drawLine(int x1, int y1, int x2, int y2, char value);
+  
   // Rendering
   void draw();
   void overlay(RenderBuffer r);
