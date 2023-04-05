@@ -8,10 +8,10 @@
 
 class Renderer {
 private:
-  RenderBuffer frame;
   std::vector<std::reference_wrapper<RenderBuffer> > stack;
 
 public:
+  RenderBuffer frame;
   size_t width;
   size_t height;
 
