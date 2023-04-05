@@ -133,6 +133,8 @@ void RenderBuffer::drawLine(int x1, int y1, int x2, int y2, char value) {
 }
 
 void RenderBuffer::drawRect(int x, int y, int width, int height, char value) {
+  width -= 1;
+  height -= 1;
   // Top line
   this->drawLine(x, y, x + width, y, value);
   // Left line
@@ -169,42 +171,20 @@ void RenderBuffer::overlay(RenderBuffer r) {
 }
 
 // Transform
-void RenderBuffer::moveUp(size_t amount) {
-  if (this->pixels.size() == 0) return;
-  for (size_t i = 0; i < amount; i++) {
-    this->pixels.push_back(this->pixels[0]);
-    this->pixels.erase(this->pixels.begin());
-    this->pixels.back().assign(this->height, ' ');
-  }
+void RenderBuffer::moveUp(int amount) {
+  this->y += amount;
 }
 
-void RenderBuffer::moveDown(size_t amount) {
-  if (this->pixels.size() == 0) return;
-  for (size_t i = 0; i < amount; i++) {
-    this->pixels.insert(this->pixels.begin(), this->pixels.back());
-    this->pixels.pop_back();
-    this->pixels.front().assign(this->height, ' ');
-  }
+void RenderBuffer::moveDown(int amount) {
+  this->y -= amount;
 }
 
-void RenderBuffer::moveLeft(size_t amount) {
-  if (this->pixels.size() == 0) return;
-  for (size_t i = 0; i < amount; i++) {
-    for (size_t j = 0; j < this->height; j++) {
-      this->pixels[j].push_back(' ');
-      this->pixels[j].erase(this->pixels[j].begin());
-    }
-  }
+void RenderBuffer::moveLeft(int amount) {
+  this->x -= amount;
 }
 
-void RenderBuffer::moveRight(size_t amount) {
-  if (this->pixels.size() == 0) return;
-  for (size_t i = 0; i < amount; i++) {
-    for (size_t j = 0; j < this->height; j++) {
-      this->pixels[j].insert(this->pixels[j].begin(), ' ');
-      this->pixels[j].pop_back();
-    }
-  }
+void RenderBuffer::moveRight(int amount) {
+  this->x += amount;
 }
 
 // Debug

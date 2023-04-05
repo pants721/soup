@@ -41,10 +41,10 @@ public:
   void overlay(RenderBuffer r);
 
   // Movement
-  void moveUp(size_t amount);
-  void moveDown(size_t amount);
-  void moveLeft(size_t amount);
-  void moveRight(size_t amount);
+  void moveUp(int amount);
+  void moveDown(int amount);
+  void moveLeft(int amount);
+  void moveRight(int amount);
   void transform(int x, int y);
 
   // Debug
