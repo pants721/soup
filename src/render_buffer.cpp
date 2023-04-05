@@ -132,6 +132,17 @@ void RenderBuffer::drawLine(int x1, int y1, int x2, int y2, char value) {
   }
 }
 
+void RenderBuffer::drawRect(int x, int y, int width, int height, char value) {
+  // Top line
+  this->drawLine(x, y, x + width, y, value);
+  // Left line
+  this->drawLine(x, y, x, y + height, value);
+  // Right line
+  this->drawLine(x + width, y, x + width, y + height, value);
+  // Bottom line
+  this->drawLine(x, y + height, x + width, y + height, value);
+}
+
 // Rendering
 void RenderBuffer::draw() {
   for (size_t row = 0; row < this->height; row++) {
