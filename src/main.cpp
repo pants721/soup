@@ -14,42 +14,22 @@
 #include "renderer.hpp"
 
 #define WIDTH 100
-#define HEIGHT 35
+#define HEIGHT 25
 
-// TODO
-// - Keyboard input
 int main() {
   static Renderer renderer(WIDTH, HEIGHT);
 
-  RenderBuffer test1(3, 3, ' ', 2);
-  test1.x = 3;
-  test1.y = 1;
-  test1.setPixel(1, 1, '#');
-  test1.setPixel(2, 1, '#');
-  test1.setPixel(3, 1, '#');
+  RenderBuffer thing(5, 5, ' ', 0);
+  thing.x = 1;
+  thing.y = 1;
+  thing.drawCircle(3, 3, 2, '#');
+  renderer.addRenderBuffer(std::ref(thing));
 
-  test1.setPixel(1, 2, '#');
-  test1.setPixel(3, 2, '#');
-
-  test1.setPixel(1, 3, '#');
-  test1.setPixel(2, 3, '#');
-  test1.setPixel(3, 3, '#');
-  renderer.addRenderBuffer(std::ref(test1));
-
-  RenderBuffer test2(3, 3, ' ', 0);
-  test2.x = 1;
-  test2.y = 1;
-  test2.setPixel(1, 1, 'A');
-  test2.setPixel(2, 1, 'A');
-  test2.setPixel(3, 1, 'A');
-
-  test2.setPixel(1, 2, 'A');
-  test2.setPixel(3, 2, 'A');
-
-  test2.setPixel(1, 3, 'A');
-  test2.setPixel(2, 3, 'A');
-  test2.setPixel(3, 3, 'A');
-  renderer.addRenderBuffer(std::ref(test2));
+  RenderBuffer thing2(1, 5, ' ', 1);
+  thing2.x = 25;
+  thing2.y = 1;
+  thing2.drawLine(1, 1, 1, 5, '@');
+  renderer.addRenderBuffer(std::ref(thing2));
 
   while (1) {
     // Clear terminal and render stack
@@ -57,9 +37,8 @@ int main() {
     renderer.clear();
 
     // Actual Game Events
-    // test1.moveUp(1);
-    // test2.moveDown(1);
-    // test2.moveRight(1);
+    thing.moveRight(1);
+    thing2.moveLeft(1);
 
     // Actual rendering
     renderer.render();
