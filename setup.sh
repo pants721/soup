@@ -19,9 +19,3 @@ cd ../../
 
 # Create sym-link from debug compile_commands.json to source directory for lsp
 ln -s build/debug/compile_commands.json .
-
-# Make build.sh executable
-chmod +x build.sh
-# Make run.sh executable
-chmod +x run.sh
-
