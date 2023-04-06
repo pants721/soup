@@ -20,7 +20,7 @@ int main() {
   static Renderer renderer(WIDTH, HEIGHT);
 
   RenderBuffer thing(5, 5, ' ', 0);
-  thing.x = 1;
+  thing.x = 15;
   thing.y = 1;
   thing.drawCircle(3, 3, 2, '#');
   renderer.addRenderBuffer(std::ref(thing));
@@ -37,7 +37,7 @@ int main() {
     renderer.clear();
 
     // Actual Game Events
-    thing.moveRight(1);
+    thing.moveLeft(1);
     thing2.moveLeft(1);
 
     // Actual rendering
