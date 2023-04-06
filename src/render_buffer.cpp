@@ -207,11 +207,13 @@ void RenderBuffer::overlay(RenderBuffer r) {
 
 // Transform
 void RenderBuffer::moveUp(int amount) {
-  this->y += amount;
+  std::cout << this->y << std::endl;
+  std::cout << this->y + this->height << std::endl;
+  this->y -= amount;
 }
 
 void RenderBuffer::moveDown(int amount) {
-  this->y -= amount;
+  this->y += amount;
 }
 
 void RenderBuffer::moveLeft(int amount) {
