@@ -16,8 +16,8 @@ public:
   size_t width;
   size_t height;
 
-  size_t x;
-  size_t y;
+  int x;
+  int y;
 
   RenderBuffer();
   explicit RenderBuffer(char value);
