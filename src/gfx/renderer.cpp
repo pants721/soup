@@ -34,17 +34,17 @@ void Renderer::update() {
   int max_height = (int)this->frame.height;
 
   // This line just finds the position of render buffer that exceeds bounds
-  auto it =
-      std::find_if(this->stack.begin(), this->stack.end(),
-                   [&max_width, &max_height](
-                       const std::reference_wrapper<RenderBuffer> obj) {
-                     return obj.get()._x > max_width || // Obj goes out the right
-                            obj.get()._x + (int)obj.get().width <
-                                0 || // Obj goes out the left
-                            obj.get()._y + (int)obj.get().height >=
-                                max_height || // Obj goes out the bottom
-                            obj.get()._y <= 0; // Obj goes out the top
-                   });
+  auto it = std::find_if(this->stack.begin(), this->stack.end(),
+                         [&max_width, &max_height](
+                             const std::reference_wrapper<RenderBuffer> obj) {
+                           return obj.get()._x >
+                                      max_width || // Obj goes out the right
+                                  obj.get()._x + (int)obj.get().width <
+                                      0 || // Obj goes out the left
+                                  obj.get()._y + (int)obj.get().height >=
+                                      max_height ||  // Obj goes out the bottom
+                                  obj.get()._y <= 0; // Obj goes out the top
+                         });
 
   if (it != this->stack.end()) {
     this->stack.erase(it);
