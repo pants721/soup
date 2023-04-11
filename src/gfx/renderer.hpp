@@ -21,7 +21,7 @@ public:
   void addRenderBuffer(RenderBuffer &r);
 
   void clear();
-  void render();
+  void update();
   void draw();
 };
 

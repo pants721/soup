@@ -21,7 +21,7 @@ void Renderer::clear() {
   this->frame.setAll(' ');
 }
 
-void Renderer::render() {
+void Renderer::update() {
   std::vector<RenderBuffer> buffers;
 
   // Known issue: Render buffers wont be derendered until they are completley

@@ -13,8 +13,6 @@ public:
 
   ~State();
   State();
-
-  void tick();
 };
 
 #endif // STATE_H

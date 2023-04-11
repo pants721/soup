@@ -6,8 +6,9 @@
 #include "gfx/renderer.hpp"
 #include "common.h"
 
+static Renderer renderer(WIDTH, HEIGHT);
+
 int main() {
-  static Renderer renderer(WIDTH, HEIGHT);
 
   RenderBuffer thing(5, 5, ' ', 0);
   thing._x = 15;
@@ -45,4 +46,4 @@ int main() {
 
     #endif // _WIN32
   }
-}
+    }
