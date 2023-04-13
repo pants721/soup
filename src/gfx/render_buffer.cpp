@@ -14,13 +14,15 @@ RenderBuffer::RenderBuffer(char value) {
   this->setAll(value);
 }
 
-RenderBuffer::RenderBuffer(size_t width, size_t height) : width(width), height(height) { }
+RenderBuffer::RenderBuffer(size_t width, size_t height) : width(width), height(height), _x(1), _y(1) { }
 
 RenderBuffer::RenderBuffer(size_t width, size_t height, char value) {
   this->pixels.assign(height, std::vector<char>(width, value));
   this->width = width;
   this->height = height;
   this->layer = 0;
+  this->_x = 1;
+  this->_y = 1;
 }
 
 RenderBuffer::RenderBuffer(size_t width, size_t height, char value, int layer) {
@@ -28,6 +30,17 @@ RenderBuffer::RenderBuffer(size_t width, size_t height, char value, int layer) {
   this->width = width;
   this->height = height;
   this->layer = layer;
+  this->_x = 1;
+  this->_y = 1;
+}
+
+RenderBuffer::RenderBuffer(size_t width, size_t height, char value, int layer, int x, int y) {
+  this->pixels.assign(height, std::vector<char>(width, value));
+  this->width = width;
+  this->height = height;
+  this->layer = layer;
+  this->_x = x;
+  this->_y = x;
 }
 
 /// INDEX BASE 1
@@ -203,23 +216,6 @@ void RenderBuffer::overlay(RenderBuffer r) {
       }
     }
   }
-}
-
-// Transform
-void RenderBuffer::_moveUp(int amount) {
-  this->_y -= amount;
-}
-
-void RenderBuffer::_moveDown(int amount) {
-  this->_y += amount;
-}
-
-void RenderBuffer::_moveLeft(int amount) {
-  this->_x -= amount;
-}
-
-void RenderBuffer::_moveRight(int amount) {
-  this->_x += amount;
 }
 
 // Debug

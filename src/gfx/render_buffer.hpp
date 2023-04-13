@@ -24,6 +24,7 @@ public:
   RenderBuffer(size_t width, size_t height);
   RenderBuffer(size_t width, size_t height, char value);
   RenderBuffer(size_t width, size_t height, char value, int layer);
+  RenderBuffer(size_t width, size_t height, char value, int layer, int x, int y);
 
   char getPixel(size_t x_coord, size_t y_coord);
   void setPixel(size_t x_coord, size_t y_coord, char value);
@@ -40,12 +41,6 @@ public:
   // Rendering
   void draw();
   void overlay(RenderBuffer r);
-
-  // Movement
-  void _moveUp(int amount);
-  void _moveDown(int amount);
-  void _moveLeft(int amount);
-  void _moveRight(int amount);
 
   // Debug
   void display();
