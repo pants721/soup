@@ -6,12 +6,10 @@
 #include <type_traits>
 #include <vector>
 #include "render_buffer.hpp"
+#include "../common.h"
 
-Renderer::Renderer(size_t width, size_t height) {
-  // NEED to initialize this with ' '
-  frame = RenderBuffer(width, height, ' ');
-  stack = std::vector<std::reference_wrapper<RenderBuffer> >();
-}
+Renderer::Renderer() : frame(WIDTH, HEIGHT, ' ', 100), width(WIDTH), height(HEIGHT) {};
+Renderer::Renderer(size_t width, size_t height) : frame(width, height, ' ', 100), width(width), height(height) {};
 
 void Renderer::addRenderBuffer(RenderBuffer &r) {
   this->stack.push_back(r);

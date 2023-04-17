@@ -15,6 +15,7 @@ public:
   size_t width;
   size_t height;
 
+  Renderer();
   Renderer(size_t width, size_t height);
   Renderer(size_t width, size_t height, std::vector<std::reference_wrapper<RenderBuffer> > stack);
 

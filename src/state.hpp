@@ -2,7 +2,7 @@
 #define STATE_H
 
 #include "gfx/renderer.hpp"
-#include "engine/game_object.hpp"
+#include "entity/game_object.hpp"
 #include <vector>
 
 class State {
@@ -11,8 +11,10 @@ public:
   Renderer renderer;
   std::vector<GameObject> objects;
 
-  ~State();
-  State();
+  void init();
+  void tick();
+  void update();
+  void render();
 };
 
 #endif // STATE_H

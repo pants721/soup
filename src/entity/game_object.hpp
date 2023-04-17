@@ -18,7 +18,7 @@ public:
   GameObject(int width, int height, int layer);
 
   void update();
-  virtual void tick();
+  void tick();
 
   // Movement
   void moveUp(int amount);
