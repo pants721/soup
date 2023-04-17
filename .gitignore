@@ -4,6 +4,8 @@ scratch.md
 soup
 build/
 build/*
+bin/
+bin/*
 
 # Prerequisites
 *.d
