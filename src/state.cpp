@@ -1,21 +1,28 @@
 #include "state.hpp"
 
-void State::init() {
-  for (auto &obj : this->objects) {
-    this->renderer.addRenderBuffer(std::ref(obj.render_buffer));
+#define object_for(objects, call)                                              \
+  for (auto &obj : this->objects) {                                            \
+    obj.call();                                                                \
   }
+
+#define add_to_renderer(objects)                                               \
+  for (auto &obj : this->objects) {                                            \
+    this->renderer.addRenderBuffer(std::ref(obj.render_buffer));               \
+  }
+
+void State::init() {
+  add_to_renderer(game_objects);
+  add_to_renderer(bouncer_objects);
 }
 
 void State::tick() {
-  for (auto &obj : this->objects) {
-    obj.tick();
-  }
+  object_for(game_objects, tick);
+  object_for(bouncer_objects, tick);
 }
 
 void State::update() {
-  for (auto &obj : this->objects) {
-    obj.update();
-  }
+  object_for(game_objects, update);
+  object_for(bouncer_objects, update);
   this->renderer.update();
 }
 

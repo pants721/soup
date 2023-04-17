@@ -1,6 +1,6 @@
 #include "bouncer.hpp"
 
-#include "../common.h"
+#include "../common.hpp"
 #include <iostream>
 
 Bouncer::Bouncer(int width, int height, int layer) {
@@ -13,13 +13,19 @@ Bouncer::Bouncer(int width, int height, int layer) {
 }
 
 void Bouncer::tick() {
-  // if (x >= WIDTH) {
-  //   this->vel_x = -this->vel_x;
-  // } if (x <= 1) {
-  //   this->vel_x = abs(vel_x);
-  // }
+  // x collision
+  if (x + width >= WIDTH) {
+    vel_x = -vel_x;
+  } if (x <= 1) {
+    vel_x = abs(vel_x);
+  }
+  moveRight(vel_x);
 
-  // std::cout << vel_x;
-  // moveRight(vel_x);
-  moveRight(1);
+  // y collision
+  if (y + height >= HEIGHT - 2) {
+    vel_y = -vel_y;
+  } if (y <= 1) {
+    vel_y = abs(vel_y);
+  }
+  moveDown(vel_y);
 }

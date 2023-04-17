@@ -5,7 +5,6 @@ UNAME_S = $(shell uname -s)
 CC = clang++
 
 INCFLAGS = -iquotesrc
-INCFLAGS += -Ilib/any/include/boost
 
 CCFLAGS  = -std=c++20 -O2 -g -Wall -Wextra -Wpedantic -Wno-c99-extensions
 CCFLAGS += -Wno-unused-parameter
@@ -22,13 +21,10 @@ LDFLAGS += -lstdc++
 
 .PHONY: all clean
 
-all: dirs libs build 
+all: dirs build
 
 dirs:
 	mkdir -p ./$(BIN)
-
-libs:
-	cd lib/any/ && cmake .
 
 run: build
 	$(BIN)/game

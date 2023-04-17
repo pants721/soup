@@ -1,5 +1,5 @@
 #include "game_object.hpp"
-#include "../common.h"
+#include "../common.hpp"
 
 GameObject::GameObject() : x(1), y(1), width(1), height(1), layer(0), render_buffer(1, 1, ' ', 0) {}
 GameObject::GameObject(int width, int height) : x(1), y(1), width(width), height(height), render_buffer(width, height, ' ', 0) {}

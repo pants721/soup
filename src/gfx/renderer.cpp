@@ -6,7 +6,7 @@
 #include <type_traits>
 #include <vector>
 #include "render_buffer.hpp"
-#include "../common.h"
+#include "../common.hpp"
 
 Renderer::Renderer() : frame(WIDTH, HEIGHT, ' ', 100), width(WIDTH), height(HEIGHT) {};
 Renderer::Renderer(size_t width, size_t height) : frame(width, height, ' ', 100), width(width), height(height) {};
