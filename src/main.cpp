@@ -11,11 +11,11 @@
 
 int main() {
 
+  // Start
   State state = State();
 
-  Bouncer thing = Bouncer(11, 11, 0);
-  // thing.render_buffer.drawLine(1, 1, 11, 11, 'A');
-  thing.render_buffer.drawCircle(6, 6, 4, '#');
+  Bouncer thing = Bouncer(3, 3, 0);
+  thing.render_buffer.fromFile("test.txt");
   thing.render_buffer.display();
   thing.vel_x = 1;
   thing.vel_y = 1;

@@ -3,6 +3,7 @@
 
 #include <cstddef>
 #include <cstdlib>
+#include <string>
 #include <vector>
 
 class RenderBuffer {
@@ -31,6 +32,8 @@ public:
   void clearPixel(size_t x_coord, size_t y_coord);
   void setAll(char value);
   void setLayer(int val);
+
+  void fromFile(std::string path);
 
   // Drawing
   void drawLine(int x1, int y1, int x2, int y2, char value);

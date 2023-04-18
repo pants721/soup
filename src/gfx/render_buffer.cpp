@@ -2,7 +2,9 @@
 
 #include <algorithm>
 #include <cstdlib>
+#include <fstream>
 #include <iostream>
+#include <sstream>
 #include <unistd.h>
 #include <vector>
 #include <cmath>
@@ -65,6 +67,44 @@ void RenderBuffer::setAll(char value) {
 
 void RenderBuffer::setLayer(int val) {
   this->layer = val;
+}
+
+void RenderBuffer::fromFile(std::string path) {
+  std::ifstream file(path);
+
+  // Find length and width
+  std::string line;
+
+  int file_width = 0;
+  int file_height = 0;
+
+  // Find longest line
+  while (std::getline(file, line)) {
+    size_t line_length = line.length();
+    if (line_length > file_width) {
+      file_width = line_length;
+    }
+    file_height++;
+  }
+
+  this->width = file_width;
+  this->height = file_height;
+
+  int count = 0;
+  file.clear();
+  file.seekg(0, std::ios::beg);
+  while (std::getline(file, line)) {
+    // Fill in right whitespace
+    if (line.length() < file_width) {
+      for (int i = 0; i <= file_width - line.length(); i++) {
+        line += " ";
+      }
+    }
+    std::vector<char> v(line.begin(), line.end());
+    this->pixels[count] = v;
+    count++;
+  }
+
 }
 
 void RenderBuffer::drawLineLow(int x1, int y1, int x2, int y2, char value) {
