@@ -53,11 +53,11 @@ public:
   // Primarily for rendering layers
   // If on the same layer, the most recently added one will render on top
   bool operator < (const RenderBuffer &render_buffer) const {
-    return (this->layer < render_buffer.layer);
+    return (layer < render_buffer.layer);
   }
 
   bool operator > (const RenderBuffer &render_buffer) const {
-    return (this->layer > render_buffer.layer);
+    return (layer > render_buffer.layer);
   }
 
 };

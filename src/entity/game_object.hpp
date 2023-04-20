@@ -2,6 +2,7 @@
 #define GAME_OBJECT_H
 
 #include "../gfx/render_buffer.hpp"
+#include <string>
 
 class GameObject {
 private:
@@ -17,8 +18,10 @@ public:
   GameObject(int width, int height);
   GameObject(int width, int height, int layer);
 
+  void loadSprite(std::string path);
+
   void update();
-  void tick();
+  void tick(uint64_t tick_count);
 
   // Movement
   void moveUp(int amount);
