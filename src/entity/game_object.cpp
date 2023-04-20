@@ -8,7 +8,7 @@ GameObject::GameObject(int width, int height, int layer) : x(0), y(0), width(wid
 void GameObject::loadSprite(std::string path) {
   // We create the temp render buffer because it seg faults if you try to do the
   // commented out code and the game object width is smaller than the sprite
-  // you're trying to load 
+  // you're trying to load
   RenderBuffer temp(WIDTH, HEIGHT, ' ');
   temp.fromFile(path);
   width = temp.width;
@@ -48,4 +48,3 @@ void GameObject::moveLeft(int amount) {
 void GameObject::moveRight(int amount) {
   x += amount;
 }
-
