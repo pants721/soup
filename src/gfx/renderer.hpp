@@ -1,10 +1,8 @@
-#ifndef RENDERER_H
-#define RENDERER_H
+#ifndef GFX_RENDERER_HPP
+#define GFX_RENDERER_HPP
 
-#include <functional>
-#include <stddef.h>
-#include <vector>
-#include "render_buffer.hpp"
+#include "util/util.hpp"
+#include "gfx/render_buffer.hpp"
 
 class Renderer {
 private:
@@ -12,12 +10,12 @@ private:
 
 public:
   RenderBuffer frame;
-  size_t width;
-  size_t height;
+  usize width;
+  usize height;
 
   Renderer();
-  Renderer(size_t width, size_t height);
-  Renderer(size_t width, size_t height, std::vector<std::reference_wrapper<RenderBuffer> > stack);
+  Renderer(usize width, usize height);
+  Renderer(usize width, usize height, std::vector<std::reference_wrapper<RenderBuffer> > stack);
 
   void addRenderBuffer(RenderBuffer &r);
 
@@ -26,4 +24,4 @@ public:
   void draw();
 };
 
-#endif // RENDERER_H
+#endif // GFX_RENDERER_HPP

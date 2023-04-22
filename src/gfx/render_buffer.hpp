@@ -1,10 +1,7 @@
-#ifndef RENDER_STACK_H
-#define RENDER_STACK_H
+#ifndef GFX_RENDER_BUFFER_HPP
+#define GFX_RENDER_BUFFER_HPP
 
-#include <cstddef>
-#include <cstdlib>
-#include <string>
-#include <vector>
+#include "util/util.hpp"
 
 class RenderBuffer {
 private:
@@ -14,28 +11,29 @@ private:
   void drawLineHigh(int x1, int y1, int x2, int y2, char value);
 
 public:
-  size_t width;
-  size_t height;
+  usize width;
+  usize height;
 
   int _x;
   int _y;
 
   RenderBuffer();
   explicit RenderBuffer(char value);
-  RenderBuffer(size_t width, size_t height);
-  RenderBuffer(size_t width, size_t height, char value);
-  RenderBuffer(size_t width, size_t height, char value, int layer);
-  RenderBuffer(size_t width, size_t height, char value, int layer, int x, int y);
+  RenderBuffer(usize width, usize height);
+  RenderBuffer(usize width, usize height, char value);
+  RenderBuffer(usize width, usize height, char value, int layer);
+  RenderBuffer(usize width, usize height, char value, int layer, int x, int y);
 
-  char getPixel(size_t x_coord, size_t y_coord);
-  void setPixel(size_t x_coord, size_t y_coord, char value);
-  void clearPixel(size_t x_coord, size_t y_coord);
+  char getPixel(usize x_coord, usize y_coord);
+  void setPixel(usize x_coord, usize y_coord, char value);
+  void clearPixel(usize x_coord, usize y_coord);
   void setAll(char value);
   void setLayer(int val);
 
   void fromFile(std::string path);
 
   // Drawing
+  void writeText(int x, int y, std::string text);
   void drawLine(int x1, int y1, int x2, int y2, char value);
   void drawRect(int x, int y, int width, int height, char value);
   void drawCircle(int centerX, int centerY, int radius, char value);
@@ -62,4 +60,4 @@ public:
 
 };
 
-#endif // RENDER_STACK_H
+#endif // GFX_RENDER_BUFFER_HPP

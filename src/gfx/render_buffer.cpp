@@ -1,13 +1,6 @@
 #include "render_buffer.hpp"
 
-#include <algorithm>
-#include <cstdlib>
-#include <fstream>
-#include <iostream>
-#include <sstream>
-#include <unistd.h>
-#include <vector>
-#include <cmath>
+#include "util/util.hpp"
 
 // Constructors
 RenderBuffer::RenderBuffer() : pixels(), width(), height() { }
@@ -16,35 +9,35 @@ RenderBuffer::RenderBuffer(char value) {
   setAll(value);
 }
 
-RenderBuffer::RenderBuffer(size_t width, size_t height)
+RenderBuffer::RenderBuffer(usize width, usize height)
   : layer(0), width(width), height(height), _x(0), _y(0) {}
 
-RenderBuffer::RenderBuffer(size_t width, size_t height, char value)
+RenderBuffer::RenderBuffer(usize width, usize height, char value)
     : layer(0), width(width), height(height), _x(0), _y(0) {
   pixels.assign(height, std::vector<char>(width, value));
 }
 
-RenderBuffer::RenderBuffer(size_t width, size_t height, char value, int layer)
+RenderBuffer::RenderBuffer(usize width, usize height, char value, int layer)
     : layer(layer), width(width), height(height), _x(0), _y(0) {
   pixels.assign(height, std::vector<char>(width, value));
 }
 
-RenderBuffer::RenderBuffer(size_t width, size_t height, char value, int layer,
+RenderBuffer::RenderBuffer(usize width, usize height, char value, int layer,
                            int x, int y)
     : layer(layer), width(width), height(height), _x(x), _y(y) {
   pixels.assign(height, std::vector<char>(width, value));
 }
 
 // Pixel manipulation
-char RenderBuffer::getPixel(size_t x_coord, size_t y_coord) {
+char RenderBuffer::getPixel(usize x_coord, usize y_coord) {
   return pixels[y_coord][x_coord];
 }
 
-void RenderBuffer::setPixel(size_t x_coord, size_t y_coord, char value) {
+void RenderBuffer::setPixel(usize x_coord, usize y_coord, char value) {
   pixels[y_coord][x_coord] = value;
 }
 
-void RenderBuffer::clearPixel(size_t x_coord, size_t y_coord) {
+void RenderBuffer::clearPixel(usize x_coord, usize y_coord) {
   pixels[y_coord][x_coord] = ' ';
 }
 
@@ -94,6 +87,12 @@ void RenderBuffer::fromFile(std::string path) {
     count++;
   }
 
+}
+
+void RenderBuffer::writeText(int x, int y, std::string text) {
+  for (int i = 0; i < (int)text.length(); i++) {
+    setPixel(x + i, y, text[i]);
+  }
 }
 
 void RenderBuffer::drawLineLow(int x1, int y1, int x2, int y2, char value) {
@@ -224,8 +223,8 @@ void RenderBuffer::drawCircleEightPoints(int centerX, int centerY, int x, int y,
 
 // Rendering
 void RenderBuffer::draw() {
-  for (size_t row = 0; row < height; row++) {
-    for (size_t col = 0; col < width; col++) {
+  for (usize row = 0; row < height; row++) {
+    for (usize col = 0; col < width; col++) {
       std::cout << pixels[row][col];
     }
     std::cout << std::endl;
@@ -234,13 +233,13 @@ void RenderBuffer::draw() {
 
 // Smaller buffer should be passed as r
 void RenderBuffer::overlay(RenderBuffer r) {
-  for (size_t i = 0; i < r.height; i++) {
-    for (size_t j = 0; j < r.width; j++) {
+  for (usize i = 0; i < r.height; i++) {
+    for (usize j = 0; j < r.width; j++) {
       // Merge the two images by overwriting pixels of image1 with pixels of
       // image2
       if (r.pixels[i][j] != ' ') {
-        size_t render_x = j + r._x;
-        size_t render_y = i + r._y;
+        usize render_x = j + r._x;
+        usize render_y = i + r._y;
         pixels[render_y][render_x] = r.pixels[i][j];
       }
     }
@@ -249,8 +248,8 @@ void RenderBuffer::overlay(RenderBuffer r) {
 
 // Debug
 void RenderBuffer::display() {
-  for (size_t a = 0; a < height; a++) {
-    for (size_t b = 0; b < width; b++) {
+  for (usize a = 0; a < height; a++) {
+    for (usize b = 0; b < width; b++) {
       std::cout << pixels[a][b] << " ";
     }
     std::cout << std::endl;

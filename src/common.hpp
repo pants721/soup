@@ -1,8 +1,10 @@
-#ifndef COMMON_H
-#define COMMON_H
+#ifndef COMMON_HPP
+#define COMMON_HPP
 
 #define WIDTH 100
 #define HEIGHT 30
+
+#define FPS 60
 
 #define CENTER_X WIDTH / 2
 #define CENTER_Y HEIGHT / 2
@@ -25,4 +27,4 @@
 
 #define UNUSED(x) (void)(x)
 
-#endif // COMMON_H
+#endif // COMMON_HPP

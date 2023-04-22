@@ -1,5 +1,6 @@
 #include "game_object.hpp"
-#include "../common.hpp"
+#include "common.hpp"
+#include "util/util.hpp"
 
 GameObject::GameObject() : x(0), y(0), width(1), height(1), layer(0), render_buffer(1, 1, ' ', 0) {}
 GameObject::GameObject(int width, int height) : x(0), y(0), width(width), height(height), render_buffer(width, height, ' ', 0) {}
@@ -28,7 +29,7 @@ void GameObject::update() {
   render_buffer.height = height;
 }
 
-void GameObject::tick(uint64_t tick_count) {
+void GameObject::tick(u64 tick_count) {
   moveRight(1);
 }
 

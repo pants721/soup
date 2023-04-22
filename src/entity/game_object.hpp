@@ -1,8 +1,8 @@
-#ifndef GAME_OBJECT_H
-#define GAME_OBJECT_H
+#ifndef ENTITY_GAME_OBJECT_HPP
+#define ENTITY_GAME_OBJECT_HPP
 
-#include "../gfx/render_buffer.hpp"
-#include <string>
+#include "gfx/render_buffer.hpp"
+#include "util/util.hpp"
 
 class GameObject {
 private:
@@ -21,7 +21,7 @@ public:
   void loadSprite(std::string path);
 
   void update();
-  void tick(uint64_t tick_count);
+  void tick(u64 tick_count);
 
   // Movement
   void moveUp(int amount);
@@ -30,4 +30,4 @@ public:
   void moveRight(int amount);
 };
 
-#endif // GAME_OBJECT_H
+#endif // ENTITY_GAME_OBJECT_HPP
