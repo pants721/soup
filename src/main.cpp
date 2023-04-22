@@ -20,7 +20,8 @@ int main(int argc, char** argv) {
 
   state.init();
 
-  while (1) {
+  bool exit = false;
+  while (!exit) {
     state.clear(); // Clear the terminal and renderer stack
 
     // Actual rendering
