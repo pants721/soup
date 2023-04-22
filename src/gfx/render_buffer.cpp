@@ -225,9 +225,9 @@ void RenderBuffer::drawCircleEightPoints(int centerX, int centerY, int x, int y,
 void RenderBuffer::draw() {
   for (usize row = 0; row < height; row++) {
     for (usize col = 0; col < width; col++) {
-      std::cout << pixels[row][col];
+      std::printf("%c", pixels[row][col]);
     }
-    std::cout << std::endl;
+    std::printf("\n");
   }
 }
 
@@ -250,8 +250,8 @@ void RenderBuffer::overlay(RenderBuffer r) {
 void RenderBuffer::display() {
   for (usize a = 0; a < height; a++) {
     for (usize b = 0; b < width; b++) {
-      std::cout << pixels[a][b] << " ";
+      std::printf("%c ", pixels[a][b]);
     }
-    std::cout << std::endl;
+    std::printf("\n");
   }
 }
