@@ -10,8 +10,6 @@ int main(int argc, char** argv) {
 
   Bouncer thing = Bouncer();
   thing.loadSprite("sprites/bouncer.txt");
-  thing.vel_x = 1;
-  thing.vel_y = 1;
   state.game_objects.push_back(&thing);
 
   GameObject thing2 = GameObject();
