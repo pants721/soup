@@ -23,10 +23,7 @@ int main(int argc, char** argv) {
   state.init();
 
   while (1) {
-    // Clear terminal and render stack
-    system("clear");
-    state.renderer.clear();
-
+    state.clear(); // Clear the terminal and renderer stack
 
     // Actual rendering
     state.tick();

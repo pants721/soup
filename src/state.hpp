@@ -13,6 +13,7 @@ public:
   u64 tick_count;
 
   void init();
+  void clear();
   void tick();
   void update();
   void render();

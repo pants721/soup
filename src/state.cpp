@@ -8,6 +8,11 @@ void State::init() {
     renderer.addRenderBuffer(std::ref(obj->render_buffer));
 }
 
+void State::clear() {
+  system("clear");
+  renderer.clear();
+}
+
 void State::tick() {
   for (auto &obj : game_objects)
     obj->tick(tick_count);
