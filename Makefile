@@ -29,9 +29,6 @@ dirs:
 run: build
 	$(BIN)/game
 
-debug: build
-	$(BIN)/game --debug
-
 build: dirs $(OBJ)
 	$(CC) -o $(BIN)/game $(filter %.o,$^) $(LDFLAGS)
 
