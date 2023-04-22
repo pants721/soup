@@ -1,7 +1,7 @@
-#include "renderer.hpp"
+#include "gfx/renderer.hpp"
 
 #include "util/util.hpp"
-#include "render_buffer.hpp"
+#include "gfx/render_buffer.hpp"
 #include "common.hpp"
 
 Renderer::Renderer() : frame(WIDTH, HEIGHT, ' ', 100), width(WIDTH), height(HEIGHT) {};

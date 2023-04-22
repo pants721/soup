@@ -1,16 +1,15 @@
 #ifndef STATE_HPP
 #define STATE_HPP
 
-#include <vector>
-#include "gfx/renderer.hpp"
-#include "entity/game_object.hpp"
-#include "util/types.hpp"
+#include "entity/entity.hpp"
+#include "gfx/gfx.hpp"
+#include "util/util.hpp"
 
 class State {
 private:
 public:
   Renderer renderer;
-  std::vector<GameObject> game_objects;
+  std::vector<GameObject*> game_objects;
   u64 tick_count;
 
   void init();

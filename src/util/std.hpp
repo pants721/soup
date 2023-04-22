@@ -24,6 +24,7 @@
 #include <iterator>
 #include <list>
 #include <map>
+#include <memory>
 #include <mutex>
 #include <optional>
 #include <queue>

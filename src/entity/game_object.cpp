@@ -1,10 +1,12 @@
-#include "game_object.hpp"
+#include "entity/game_object.hpp"
 #include "common.hpp"
+#include "gfx/render_buffer.hpp"
 #include "util/util.hpp"
 
 GameObject::GameObject() : x(0), y(0), width(1), height(1), layer(0), render_buffer(1, 1, ' ', 0) {}
-GameObject::GameObject(int width, int height) : x(0), y(0), width(width), height(height), render_buffer(width, height, ' ', 0) {}
-GameObject::GameObject(int width, int height, int layer) : x(0), y(0), width(width), height(height), render_buffer(width, height, ' ', layer) {}
+GameObject::GameObject(int x, int y, int width, int height, int layer)
+    : x(0), y(0), width(width), height(height),
+      render_buffer(width, height, ' ', layer) {}
 
 void GameObject::loadSprite(std::string path) {
   // We create the temp render buffer because it seg faults if you try to do the
@@ -29,9 +31,7 @@ void GameObject::update() {
   render_buffer.height = height;
 }
 
-void GameObject::tick(u64 tick_count) {
-  moveRight(1);
-}
+void GameObject::tick(u64 tick_count) {}
 
 // Movement
 void GameObject::moveUp(int amount) {

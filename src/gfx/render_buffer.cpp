@@ -1,4 +1,4 @@
-#include "render_buffer.hpp"
+#include "gfx/render_buffer.hpp"
 
 #include "util/util.hpp"
 

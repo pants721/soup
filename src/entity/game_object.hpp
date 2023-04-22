@@ -15,13 +15,12 @@ public:
   RenderBuffer render_buffer;
 
   GameObject();
-  GameObject(int width, int height);
-  GameObject(int width, int height, int layer);
+  GameObject(int x, int y, int width, int height, int layer);
 
   void loadSprite(std::string path);
 
   void update();
-  void tick(u64 tick_count);
+  virtual void tick(u64 tick_count);
 
   // Movement
   void moveUp(int amount);

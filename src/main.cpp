@@ -1,5 +1,3 @@
-#include <unistd.h>
-
 #include "common.hpp"
 #include "state.hpp"
 
@@ -10,9 +8,17 @@
 int main(int argc, char** argv) {
   State state = State();
 
-  GameObject thing = GameObject(1, 1, 0);
-  thing.loadSprite("sprites/default.txt");
-  state.game_objects.push_back(thing);
+  Bouncer thing = Bouncer();
+  thing.loadSprite("sprites/bouncer.txt");
+  thing.vel_x = 1;
+  thing.vel_y = 1;
+  state.game_objects.push_back(&thing);
+
+  GameObject thing2 = GameObject();
+  thing2.loadSprite("sprites/default.txt");
+  thing2.x = 15;
+  thing2.y = 15;
+  state.game_objects.push_back(&thing2);
 
   state.init();
 
