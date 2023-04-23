@@ -7,6 +7,4 @@
 // Util headers
 #include "util/types.hpp"
 
-
-
 #endif // UTIL_UTIL_HPP

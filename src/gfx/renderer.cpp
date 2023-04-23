@@ -28,6 +28,7 @@ void Renderer::update() {
   int max_height = (int)frame.height;
 
   // This line just finds the position of render buffer that exceeds bounds
+  // Good luck if someone else tries maintaining this
   auto it = std::find_if(stack.begin(), stack.end(),
                          [&max_width, &max_height](
                              const std::reference_wrapper<RenderBuffer> obj) {

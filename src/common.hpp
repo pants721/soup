@@ -5,11 +5,12 @@
 #define HEIGHT 30
 
 #define FPS 60
+#define DELTA_TIME (1.0f / FPS)
 
-#define CENTER_X WIDTH / 2
-#define CENTER_Y HEIGHT / 2
-#define MAX_X WIDTH - 1
-#define MAX_Y HEIGHT - 1
+#define CENTER_X (WIDTH / 2)
+#define CENTER_Y (HEIGHT / 2)
+#define MAX_X (WIDTH - 1)
+#define MAX_Y (HEIGHT - 1)
 
 #define DEBUG(...) fprintf(stderr, __VA_ARGS__)
 

@@ -3,5 +3,6 @@
 
 #include "entity/game_object.hpp"
 #include "entity/bouncer.hpp"
+#include "entity/player.hpp"
 
 #endif // ENTITY_HPP
