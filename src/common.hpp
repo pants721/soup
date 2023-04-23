@@ -1,7 +1,7 @@
 #ifndef COMMON_HPP
 #define COMMON_HPP
 
-#define WIDTH 100
+#define WIDTH 150
 #define HEIGHT 30
 
 #define FPS 60
