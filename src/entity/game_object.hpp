@@ -5,7 +5,6 @@
 #include "util/util.hpp"
 
 class GameObject {
-private:
 public:
   int x;
   int y;
@@ -16,6 +15,8 @@ public:
 
   GameObject();
   GameObject(int x, int y, int width, int height, int layer);
+
+  bool isCollision(int change_x, int change_y);
 
   void loadSprite(std::string path);
 

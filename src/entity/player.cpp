@@ -10,16 +10,7 @@ Player::Player(InputBus* input_bus, int x, int y, int width, int height,
                int layer, int vel_x, int vel_y)
     : GameObject(x, y, width, height, layer), input_bus(input_bus) {}
 
-bool Player::isCollision(int change_x, int change_y) {
-  if (x + width + change_x > WIDTH ||
-      x + change_x < 0 ||
-      y + height + change_y > HEIGHT ||
-      y + change_y < 0) {
-    return true;
-  } else {
-    return false;
-  }
-}
+
 
 void Player::tick(u64 tick_count) {
   if (!input_bus->keys.empty()) {

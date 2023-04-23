@@ -10,6 +10,10 @@ int main() {
 
   State state = State();
 
+  Bouncer thing;
+  thing.loadSprite("sprites/bouncer.txt");
+  state.game_objects.push_back(&thing);
+
   Player thing2(&state.input_bus);
   thing2.loadSprite("sprites/default.txt");
   thing2.x = 15;

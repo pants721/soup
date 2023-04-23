@@ -23,6 +23,15 @@ void GameObject::loadSprite(std::string path) {
   // height = render_buffer.height;
 }
 
+bool GameObject::isCollision(int change_x, int change_y) {
+  if (x + width + change_x > WIDTH || x + change_x < 0 ||
+      y + height + change_y > HEIGHT || y + change_y < 0) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 void GameObject::update() {
   // Render update
   render_buffer._x = x;
