@@ -6,5 +6,6 @@
 
 // Util headers
 #include "util/types.hpp"
+#include "util/terminal.hpp"
 
 #endif // UTIL_UTIL_HPP

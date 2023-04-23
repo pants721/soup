@@ -1,6 +1,5 @@
 #include "common.hpp"
 #include "state.hpp"
-#include "terminal.hpp"
 
 #include "entity/entity.hpp"
 #include "gfx/gfx.hpp"
